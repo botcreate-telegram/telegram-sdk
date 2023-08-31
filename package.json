@@ -1,0 +1,51 @@
+{
+  "name": "@botcreate/telegram-sdk",
+  "version": "0.1.5",
+  "description": "Telegram Bot API: all methods and objects",
+  "type": "module",
+  "main": "index.ts",
+  "exports": {
+    "types": "./lib/index.d.ts"
+  },
+  "files": [
+    "/lib"
+  ],
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "rm -rf ./lib/*; cp -R src/ lib/",
+    "changeset": "npm run build && changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "changeset publish",
+    "eslint": "npx eslint src",
+    "format": "prettier --write ."
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/botcreate-telegram/telegram-sdk.git"
+  },
+  "keywords": [
+    "telegram",
+    "sdk",
+    "types",
+    "typescript"
+  ],
+  "author": "Nick Kosarev <hmbanan666@hotmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/botcreate-telegram/telegram-sdk/issues"
+  },
+  "homepage": "https://github.com/botcreate-telegram/telegram-sdk#readme",
+  "devDependencies": {
+    "@changesets/cli": "^2.26.2",
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.3",
+    "typescript": "5.2.2"
+  }
+}
