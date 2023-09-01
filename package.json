@@ -1,18 +1,15 @@
 {
   "name": "@botcreate/telegram-sdk",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Telegram Bot API: all methods and objects",
   "type": "module",
-  "main": "index.ts",
-  "exports": {
-    "types": "./lib/index.d.ts"
-  },
+  "main": "./lib/index.js",
   "files": [
     "/lib"
   ],
-  "types": "lib/index.d.ts",
   "scripts": {
-    "build": "rm -rf ./lib/*; cp -R src/ lib/",
+    "build": "rm -rf ./lib/*; npm run build:esm",
+    "build:esm": "tsc",
     "changeset": "npm run build && changeset",
     "changeset:version": "changeset version",
     "changeset:publish": "changeset publish",

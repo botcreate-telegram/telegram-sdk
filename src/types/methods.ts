@@ -1,4 +1,20 @@
-interface SendMessage {
+import {
+  BotCommand,
+  BotCommandScope,
+  Chat,
+  ChatMember,
+  ForceReply,
+  InlineKeyboardMarkup,
+  InputFile,
+  Message,
+  MessageEntity,
+  ReplyKeyboardMarkup,
+  ReplyKeyboardRemove,
+  User,
+  WebhookInfo,
+} from './objects';
+
+export interface SendMessage {
   /** Unique identifier for the target chat or username of the target channel (in the format @channel) */
   chat_id: string | number;
   /** Text of the message to be sent, 1-4096 characters after entities parsing */
@@ -27,12 +43,12 @@ interface SendMessage {
     | ForceReply;
 }
 
-interface SendMessageResult {
+export interface SendMessageResult {
   ok: boolean;
   result: Message;
 }
 
-interface SetWebhook {
+export interface SetWebhook {
   /** HTTPS URL to send updates to. Use an empty string to remove webhook integration */
   url: string;
   /** Upload your public key certificate so that the root certificate in use can be checked. See our self-signed guide for details. */
@@ -49,23 +65,23 @@ interface SetWebhook {
   secret_token?: string;
 }
 
-interface SetWebhookResult {
+export interface SetWebhookResult {
   ok: boolean;
   result: boolean;
   description?: string;
 }
 
-interface WebhookInfoResult {
+export interface WebhookInfoResult {
   status: boolean;
   result: WebhookInfo;
 }
 
-interface GetMeResult {
+export interface GetMeResult {
   status: boolean;
   result: User;
 }
 
-interface SetMyCommands {
+export interface SetMyCommands {
   /** A JSON-serialized list of bot commands to be set as the list of the bot commands. At most 100 commands can be specified. */
   commands: BotCommand[];
   /** A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault. */
@@ -74,41 +90,41 @@ interface SetMyCommands {
   language_code?: string;
 }
 
-interface SetMyCommandsResult {
+export interface SetMyCommandsResult {
   ok: boolean;
   result: boolean;
 }
 
-interface GetChat {
+export interface GetChat {
   chat_id: string | number;
 }
 
-interface GetChatResult {
+export interface GetChatResult {
   ok: boolean;
   result: Chat;
 }
 
-interface GetFile {
+export interface GetFile {
   /** File identifier to get information about */
   file_id: string;
 }
 
-interface GetFileResult {
+export interface GetFileResult {
   ok: boolean;
   result: File;
 }
 
-interface GetChatAdministrators {
+export interface GetChatAdministrators {
   /** Unique identifier for the target chat or username of the target supergroup (in the format @username) */
   chat_id: number | string;
 }
 
-interface GetChatAdministratorsResult {
+export interface GetChatAdministratorsResult {
   ok: boolean;
   result: ChatMember[];
 }
 
-interface SetChatAdministratorCustomTitle {
+export interface SetChatAdministratorCustomTitle {
   /** Unique identifier for the target chat or username of the target supergroup (in the format @username) */
   chat_id: number | string;
   /** Unique identifier of the target user */
@@ -117,12 +133,12 @@ interface SetChatAdministratorCustomTitle {
   custom_title: string;
 }
 
-interface SetChatAdministratorCustomTitleResult {
+export interface SetChatAdministratorCustomTitleResult {
   ok: boolean;
   result: boolean;
 }
 
-interface PromoteChatMember {
+export interface PromoteChatMember {
   /** Unique identifier for the target chat or username of the target channel (in the format @username) */
   chat_id: string | number;
   /** Unique identifier of the target user */
@@ -142,24 +158,24 @@ interface PromoteChatMember {
   can_manage_topics?: boolean;
 }
 
-interface PromoteChatMemberResult {
+export interface PromoteChatMemberResult {
   ok: boolean;
   result: boolean;
 }
 
-interface SetChatTitle {
+export interface SetChatTitle {
   /** Unique identifier for the target chat or username of the target channel (in the format @username) */
   chat_id: number | string;
   /** New chat title, 1-128 characters */
   title: string;
 }
 
-interface SetChatTitleResult {
+export interface SetChatTitleResult {
   ok: boolean;
   result: boolean;
 }
 
-interface ForwardMessage {
+export interface ForwardMessage {
   /** Unique identifier for the target chat or username of the target channel (in the format @username) */
   chat_id: string | number;
   /** Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
@@ -174,12 +190,12 @@ interface ForwardMessage {
   message_id: number;
 }
 
-interface ForwardMessageResult {
+export interface ForwardMessageResult {
   ok: boolean;
   result: Message;
 }
 
-interface EditMessageText {
+export interface EditMessageText {
   /** Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @username) */
   chat_id?: string | number;
   /** Required if inline_message_id is not specified. Identifier of the message to edit */
@@ -198,7 +214,7 @@ interface EditMessageText {
   reply_markup?: InlineKeyboardMarkup;
 }
 
-interface EditMessageTextResult {
+export interface EditMessageTextResult {
   ok: boolean;
   result: Message;
 }

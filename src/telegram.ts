@@ -1,3 +1,30 @@
+import {
+  EditMessageText,
+  EditMessageTextResult,
+  ForwardMessage,
+  ForwardMessageResult,
+  GetChat,
+  GetChatAdministrators,
+  GetChatAdministratorsResult,
+  GetChatResult,
+  GetFile,
+  GetFileResult,
+  GetMeResult,
+  PromoteChatMember,
+  PromoteChatMemberResult,
+  SendMessage,
+  SendMessageResult,
+  SetChatAdministratorCustomTitle,
+  SetChatAdministratorCustomTitleResult,
+  SetChatTitle,
+  SetChatTitleResult,
+  SetMyCommands,
+  SetMyCommandsResult,
+  SetWebhook,
+  SetWebhookResult,
+  WebhookInfoResult,
+} from './types/methods';
+
 export class Telegram {
   private readonly botToken: string;
 

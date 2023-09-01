@@ -1,22 +1,25 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "ES2021",
-    "sourceMap": true,
     "outDir": "./lib",
-    "baseUrl": "./",
+    "module": "esnext",
+    "target": "es6",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "typeRoots": [
+      "./lib"
+    ],
+    "declaration": true,
+    "removeComments": false,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
     "incremental": true,
     "skipLibCheck": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "strictBindCallApply": true,
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["node_modules", "lib"]
 }

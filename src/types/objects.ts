@@ -1,4 +1,4 @@
-interface User {
+export interface User {
   /** Unique identifier for this user or bot. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. */
   id: number; // number from API, bigint in DB
   /** True, if this user is a bot */
@@ -23,14 +23,14 @@ interface User {
   supports_inline_queries?: boolean;
 }
 
-interface UserShared {
+export interface UserShared {
   /** Identifier of the request */
   request_id: number;
   /** Identifier of the shared user. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. The bot may not have access to the user and could be unable to use this identifier, unless the user is already known to the bot by some other means. */
   user_id: number;
 }
 
-interface Message {
+export interface Message {
   /** Unique message identifier inside this chat */
   message_id: number;
   /** Unique identifier of a message thread to which the message belongs; for supergroups only */
@@ -175,7 +175,7 @@ interface Message {
   reply_markup?: InlineKeyboardMarkup;
 }
 
-interface MessageEntity {
+export interface MessageEntity {
   /** Type of the entity. Currently, can be “mention” (@username), “hashtag” (#hashtag), “cashtag” ($USD), “bot_command” (/start@jobs_bot), “url” (https://telegram.org), “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold text), “italic” (italic text), “underline” (underlined text), “strikethrough” (strikethrough text), “spoiler” (spoiler message), “code” (mono width string), “pre” (mono width block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames), “custom_emoji” (for inline custom emoji stickers) */
   type:
     | 'mention'
@@ -209,12 +209,12 @@ interface MessageEntity {
   custom_emoji_id?: string;
 }
 
-interface MessageAutoDeleteTimerChanged {
+export interface MessageAutoDeleteTimerChanged {
   /** New auto-delete time for messages in the chat; in seconds */
   message_auto_delete_time: number;
 }
 
-interface Location {
+export interface Location {
   /** Float. Longitude as defined by sender */
   longitude: number;
   /** Float. Latitude as defined by sender */
@@ -229,7 +229,7 @@ interface Location {
   proximity_alert_radius?: number;
 }
 
-interface Chat {
+export interface Chat {
   /** Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier. */
   id: number; // number from API, bigint in DB
   /** Type of chat, can be either “private”, “group”, “supergroup” or “channel” */
@@ -288,14 +288,14 @@ interface Chat {
   location?: ChatLocation;
 }
 
-interface ChatLocation {
+export interface ChatLocation {
   /** The location to which the supergroup is connected. Can't be a live location. */
   location: Location;
   /** Location address; 1-64 characters, as defined by the chat owner */
   address: string;
 }
 
-interface ChatPermissions {
+export interface ChatPermissions {
   can_send_messages?: boolean;
   can_send_audios?: boolean;
   can_send_documents?: boolean;
@@ -312,7 +312,7 @@ interface ChatPermissions {
   can_manage_topics?: boolean;
 }
 
-interface ChatPhoto {
+export interface ChatPhoto {
   /** File identifier of small (160x160) chat photo. This file_id can be used only for photo download and only for as long as the photo is not changed. */
   small_file_id: string;
   /** Unique file identifier of small (160x160) chat photo, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file. */
@@ -323,14 +323,14 @@ interface ChatPhoto {
   big_file_unique_id: string;
 }
 
-interface ChatShared {
+export interface ChatShared {
   /** Identifier of the request */
   request_id: number;
   /** Identifier of the shared chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. The bot may not have access to the chat and could be unable to use this identifier, unless the chat is already known to the bot by some other means. */
   chat_id: number;
 }
 
-interface ChatAdministratorRights {
+export interface ChatAdministratorRights {
   is_anonymous: boolean;
   can_manage_chat: boolean;
   can_delete_messages: boolean;
@@ -345,7 +345,7 @@ interface ChatAdministratorRights {
   can_manage_topics?: boolean;
 }
 
-type ChatMember =
+export type ChatMember =
   | ChatMemberOwner
   | ChatMemberAdministrator
   | ChatMemberMember
@@ -353,7 +353,7 @@ type ChatMember =
   | ChatMemberLeft
   | ChatMemberBanned;
 
-interface ChatMemberOwner {
+export interface ChatMemberOwner {
   /** The member's status in the chat, always “creator” */
   status: 'creator';
   /** Information about the user */
@@ -364,7 +364,7 @@ interface ChatMemberOwner {
   custom_title?: string;
 }
 
-interface ChatMemberAdministrator {
+export interface ChatMemberAdministrator {
   /** The member's status in the chat, always “administrator” */
   status: 'administrator';
   /** Information about the user */
@@ -399,14 +399,14 @@ interface ChatMemberAdministrator {
   custom_title?: string;
 }
 
-interface ChatMemberMember {
+export interface ChatMemberMember {
   /** The member's status in the chat, always “member” */
   status: 'member';
   /** Information about the user */
   user: User;
 }
 
-interface ChatMemberRestricted {
+export interface ChatMemberRestricted {
   /** The member's status in the chat, always “restricted” */
   status: 'restricted';
   /** Information about the user */
@@ -433,14 +433,14 @@ interface ChatMemberRestricted {
   until_date: number;
 }
 
-interface ChatMemberLeft {
+export interface ChatMemberLeft {
   /** The member's status in the chat, always “left” */
   status: 'left';
   /** Information about the user */
   user: User;
 }
 
-interface ChatMemberBanned {
+export interface ChatMemberBanned {
   /** The member's status in the chat, always “kicked” */
   status: 'kicked';
   /** Information about the user */
@@ -449,7 +449,7 @@ interface ChatMemberBanned {
   until_date: number;
 }
 
-interface ChatMemberUpdated {
+export interface ChatMemberUpdated {
   /** Chat the user belongs to */
   chat: Chat;
   /** Performer of the action, which resulted in the change */
@@ -466,7 +466,7 @@ interface ChatMemberUpdated {
   via_chat_folder_invite_link?: boolean;
 }
 
-interface ChatInviteLink {
+export interface ChatInviteLink {
   /** The invite link. If the link was created by another chat administrator, then the second part of the link will be replaced with “…”. */
   invite_link: string;
   /** Creator of the link */
@@ -487,7 +487,7 @@ interface ChatInviteLink {
   pending_join_request_count?: number;
 }
 
-interface ChatJoinRequest {
+export interface ChatJoinRequest {
   /** Chat to which the request was sent */
   chat: Chat;
   /** User that sent the join request */
@@ -502,7 +502,7 @@ interface ChatJoinRequest {
   invite_link?: ChatInviteLink;
 }
 
-interface PhotoSize {
+export interface PhotoSize {
   /** Identifier for this file, which can be used to download or reuse the file */
   file_id: string;
   /** Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file. */
@@ -515,7 +515,7 @@ interface PhotoSize {
   file_size?: number;
 }
 
-interface Poll {
+export interface Poll {
   /** Unique poll identifier */
   id: string;
   /** Poll question, 1-300 characters */
@@ -544,14 +544,14 @@ interface Poll {
   close_date?: number;
 }
 
-interface PollOption {
+export interface PollOption {
   /** Option text, 1-100 characters */
   text: string;
   /** Number of users that voted for this option */
   voter_count: number;
 }
 
-interface PollAnswer {
+export interface PollAnswer {
   /** Unique poll identifier */
   poll_id: string;
   /** The user, who changed the answer to the poll */
@@ -560,7 +560,7 @@ interface PollAnswer {
   option_ids: number[];
 }
 
-interface Venue {
+export interface Venue {
   /** Venue location. Can't be a live location */
   location: Location;
   /** Name of the venue */
@@ -577,7 +577,7 @@ interface Venue {
   google_place_type?: string;
 }
 
-interface InlineKeyboardButton {
+export interface InlineKeyboardButton {
   /** Label text on the button */
   text: string;
   /** HTTP or tg:// URL to be opened when the button is pressed. Links tg://user?id=<user_id> can be used to mention a user by their ID without using a username, if this is allowed by their privacy settings. */
@@ -596,12 +596,12 @@ interface InlineKeyboardButton {
   pay?: boolean;
 }
 
-interface InlineKeyboardMarkup {
+export interface InlineKeyboardMarkup {
   /** Array of button rows, each represented by an Array of InlineKeyboardButton objects */
   inline_keyboard: InlineKeyboardButton[][];
 }
 
-interface InlineQuery {
+export interface InlineQuery {
   /** Unique identifier for this query */
   id: string;
   /** Sender */
@@ -616,7 +616,7 @@ interface InlineQuery {
   location?: Location;
 }
 
-interface ChosenInlineResult {
+export interface ChosenInlineResult {
   /** The unique identifier for the result that was chosen */
   result_id: string;
   /** The user that chose the result */
@@ -629,7 +629,7 @@ interface ChosenInlineResult {
   query: string;
 }
 
-interface KeyboardButton {
+export interface KeyboardButton {
   /** Text of the button. If none of the optional fields are used, it will be sent as a message when the button is pressed */
   text: string;
   /** If specified, pressing the button will open a list of suitable users. Tapping on any user will send their identifier to the bot in a “user_shared” service message. Available in private chats only. */
@@ -646,7 +646,7 @@ interface KeyboardButton {
   web_app?: WebAppInfo;
 }
 
-interface KeyboardButtonRequestUser {
+export interface KeyboardButtonRequestUser {
   /** Signed 32-bit identifier of the request, which will be received back in the UserShared object. Must be unique within the message */
   request_id: number;
   /** Pass True to request a bot, pass False to request a regular user. If not specified, no additional restrictions are applied. */
@@ -655,7 +655,7 @@ interface KeyboardButtonRequestUser {
   user_is_premium?: boolean;
 }
 
-interface KeyboardButtonRequestChat {
+export interface KeyboardButtonRequestChat {
   /** Signed 32-bit identifier of the request, which will be received back in the ChatShared object. Must be unique within the message */
   request_id: number;
   /** Pass True to request a channel chat, pass False to request a group or a supergroup chat. */
@@ -674,12 +674,12 @@ interface KeyboardButtonRequestChat {
   bot_is_member?: boolean;
 }
 
-interface KeyboardButtonPollType {
+export interface KeyboardButtonPollType {
   /** If quiz is passed, the user will be allowed to create only polls in the quiz mode. If regular is passed, only regular polls will be allowed. Otherwise, the user will be allowed to create a poll of any type. */
   type?: string;
 }
 
-interface ReplyKeyboardMarkup {
+export interface ReplyKeyboardMarkup {
   /** Array of button rows, each represented by an Array of KeyboardButton objects */
   keyboard: KeyboardButton[][];
   /** Requests clients to always show the keyboard when the regular keyboard is hidden. Defaults to false, in which case the custom keyboard can be hidden and opened with a keyboard icon. */
@@ -694,14 +694,14 @@ interface ReplyKeyboardMarkup {
   selective?: boolean;
 }
 
-interface ReplyKeyboardRemove {
+export interface ReplyKeyboardRemove {
   /** Requests clients to remove the custom keyboard (user will not be able to summon this keyboard; if you want to hide the keyboard from sight but keep it accessible, use one_time_keyboard in ReplyKeyboardMarkup) */
   remove_keyboard: true;
   /** Use this parameter if you want to remove the keyboard for specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot message is a reply (has reply_to_message_id), sender of the original message. Example: A user votes in a poll, bot returns confirmation message in reply to the vote and removes the keyboard for that user, while still showing the keyboard with poll options to users who haven't voted yet. */
   selective?: boolean;
 }
 
-interface ForceReply {
+export interface ForceReply {
   /** Shows reply interface to the user, as if they manually selected the bot message and tapped 'Reply' */
   force_reply: true;
   /** The placeholder to be shown in the input field when the reply is active; 1-64 characters */
@@ -710,7 +710,7 @@ interface ForceReply {
   selective?: boolean;
 }
 
-interface WebhookInfo {
+export interface WebhookInfo {
   /** Webhook URL, may be empty if webhook is not set up */
   url: string;
   /** True, if a custom certificate was provided for webhook certificate checks */
@@ -731,7 +731,7 @@ interface WebhookInfo {
   allowed_updates?: string[];
 }
 
-interface Update {
+export interface Update {
   /** The update's unique identifier. Update identifiers start from a certain positive number and increase sequentially. This ID becomes especially handy if you're using webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week, then identifier of the next update will be chosen randomly instead of sequentially. */
   update_id: number;
   /** New incoming message of any kind - text, photo, sticker, etc. */
@@ -764,7 +764,7 @@ interface Update {
   chat_join_request?: ChatJoinRequest;
 }
 
-interface CallbackQuery {
+export interface CallbackQuery {
   /** Unique identifier for this query */
   id: string;
   /** Sender */
@@ -781,9 +781,9 @@ interface CallbackQuery {
   game_short_name?: string;
 }
 
-type InputFile = never;
+export type InputFile = never;
 
-interface File {
+export interface File {
   /** Identifier for this file, which can be used to download or reuse the file */
   file_id: string;
   /** Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file. */
@@ -794,14 +794,14 @@ interface File {
   file_path?: string;
 }
 
-interface BotCommand {
+export interface BotCommand {
   /** Text of the command; 1-32 characters. Can contain only lowercase English letters, digits and underscores. */
   command: string;
   /** Description of the command; 1-256 characters. */
   description: string;
 }
 
-type BotCommandScope =
+export type BotCommandScope =
   | BotCommandScopeDefault
   | BotCommandScopeAllPrivateChats
   | BotCommandScopeAllGroupChats
@@ -810,41 +810,41 @@ type BotCommandScope =
   | BotCommandScopeChatAdministrators
   | BotCommandScopeChatMember;
 
-interface BotCommandScopeDefault {
+export interface BotCommandScopeDefault {
   /** Scope type, must be default */
   type: 'default';
 }
 
-interface BotCommandScopeAllPrivateChats {
+export interface BotCommandScopeAllPrivateChats {
   /** Scope type, must be all_private_chats */
   type: 'all_private_chats';
 }
 
-interface BotCommandScopeAllGroupChats {
+export interface BotCommandScopeAllGroupChats {
   /** Scope type, must be all_group_chats */
   type: 'all_group_chats';
 }
 
-interface BotCommandScopeAllChatAdministrators {
+export interface BotCommandScopeAllChatAdministrators {
   /** Scope type, must be all_chat_administrators */
   type: 'all_chat_administrators';
 }
 
-interface BotCommandScopeChat {
+export interface BotCommandScopeChat {
   /** Scope type, must be chat */
   type: 'chat';
   /** Unique identifier for the target chat or username of the target supergroup (in the format @username) */
   chat_id: number | string;
 }
 
-interface BotCommandScopeChatAdministrators {
+export interface BotCommandScopeChatAdministrators {
   /** Scope type, must be chat_administrators */
   type: 'chat_administrators';
   /** Unique identifier for the target chat or username of the target supergroup (in the format @username) */
   chat_id: number | string;
 }
 
-interface BotCommandScopeChatMember {
+export interface BotCommandScopeChatMember {
   /** Scope type, must be chat_member */
   type: 'chat_member';
   /** Unique identifier for the target chat or username of the target supergroup (in the format @username) */
@@ -853,7 +853,7 @@ interface BotCommandScopeChatMember {
   user_id: number;
 }
 
-interface Animation {
+export interface Animation {
   /** Identifier for this file, which can be used to download or reuse the file */
   file_id: string;
   /** Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file. */
@@ -874,7 +874,7 @@ interface Animation {
   file_size?: number;
 }
 
-interface Audio {
+export interface Audio {
   /** Identifier for this file, which can be used to download or reuse the file */
   file_id: string;
   /** Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file. */
@@ -895,7 +895,7 @@ interface Audio {
   thumbnail?: PhotoSize;
 }
 
-interface Document {
+export interface Document {
   /** Identifier for this file, which can be used to download or reuse the file */
   file_id: string;
   /** Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file. */
@@ -910,7 +910,7 @@ interface Document {
   file_size?: number;
 }
 
-interface Sticker {
+export interface Sticker {
   /** Identifier for this file, which can be used to download or reuse the file */
   file_id: string;
   /** Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file. */
@@ -943,7 +943,7 @@ interface Sticker {
   file_size?: number;
 }
 
-interface MaskPosition {
+export interface MaskPosition {
   /** The part of the face relative to which the mask should be placed. One of “forehead”, “eyes”, “mouth”, or “chin”. */
   point: string;
   /** Float number. Shift by X-axis measured in widths of the mask scaled to the face size, from left to right. For example, choosing -1.0 will place mask just to the left of the default mask position. */
@@ -954,7 +954,7 @@ interface MaskPosition {
   scale: number;
 }
 
-interface ShippingQuery {
+export interface ShippingQuery {
   /** Unique query identifier */
   id: string;
   /** User who sent the query */
@@ -965,7 +965,7 @@ interface ShippingQuery {
   shipping_address: ShippingAddress;
 }
 
-interface ShippingAddress {
+export interface ShippingAddress {
   /** Two-letter ISO 3166-1 alpha-2 country code */
   country_code: string;
   /** State, if applicable */
@@ -980,7 +980,7 @@ interface ShippingAddress {
   post_code: string;
 }
 
-interface PreCheckoutQuery {
+export interface PreCheckoutQuery {
   /** Unique query identifier */
   id: string;
   /** User who sent the query */
@@ -997,7 +997,7 @@ interface PreCheckoutQuery {
   order_info?: OrderInfo;
 }
 
-interface OrderInfo {
+export interface OrderInfo {
   /** User name */
   name?: string;
   /** User's phone number */
@@ -1008,7 +1008,7 @@ interface OrderInfo {
   shipping_address?: ShippingAddress;
 }
 
-interface Video {
+export interface Video {
   /** Identifier for this file, which can be used to download or reuse the file */
   file_id: string;
   /** Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file. */
@@ -1029,7 +1029,7 @@ interface Video {
   file_size?: number;
 }
 
-interface VideoNote {
+export interface VideoNote {
   /** Identifier for this file, which can be used to download or reuse the file */
   file_id: string;
   /** Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file. */
@@ -1044,7 +1044,7 @@ interface VideoNote {
   file_size?: number;
 }
 
-interface Voice {
+export interface Voice {
   /** Identifier for this file, which can be used to download or reuse the file */
   file_id: string;
   /** Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file. */
@@ -1057,7 +1057,7 @@ interface Voice {
   file_size?: number;
 }
 
-interface Contact {
+export interface Contact {
   /** Contact's phone number */
   phone_number: string;
   /** Contact's first name */
@@ -1070,14 +1070,14 @@ interface Contact {
   vcard?: string;
 }
 
-interface Dice {
+export interface Dice {
   /** Emoji on which the dice throw animation is based */
   emoji: string;
   /** Value of the dice, 1-6 for “🎲”, “🎯” and “🎳” base emoji, 1-5 for “🏀” and “⚽” base emoji, 1-64 for “🎰” base emoji */
   value: number;
 }
 
-interface Game {
+export interface Game {
   /** Title of the game */
   title: string;
   /** Description of the game */
@@ -1092,24 +1092,24 @@ interface Game {
   animation?: Animation;
 }
 
-interface WebAppInfo {
+export interface WebAppInfo {
   /** An HTTPS URL of a Web App to be opened with additional data as specified in Initializing Web Apps */
   url: string;
 }
 
-interface WebAppData {
+export interface WebAppData {
   /** The data. Be aware that a bad client can send arbitrary data in this field. */
   data: string;
   /** Text of the web_app keyboard button from which the Web App was opened. Be aware that a bad client can send arbitrary data in this field. */
   button_text: string;
 }
 
-interface CallbackGame {
+export interface CallbackGame {
   /** A placeholder, currently holds no information. Use BotFather to set up your game. */
   data: unknown;
 }
 
-interface LoginUrl {
+export interface LoginUrl {
   /** An HTTPS URL to be opened with user authorization data added to the query string when the button is pressed. If the user refuses to provide authorization data, the original URL without information about the user will be opened. The data added is the same as described in Receiving authorization data. */
   url: string;
   /** New text of the button in forwarded messages. */
@@ -1120,7 +1120,7 @@ interface LoginUrl {
   request_write_access?: boolean;
 }
 
-interface SwitchInlineQueryChosenChat {
+export interface SwitchInlineQueryChosenChat {
   /** The default inline query to be inserted in the input field. If left empty, only the bot username will be inserted */
   query?: string;
   /** True, if private chats with users can be chosen */
@@ -1133,7 +1133,7 @@ interface SwitchInlineQueryChosenChat {
   allow_channel_chats?: boolean;
 }
 
-interface Invoice {
+export interface Invoice {
   /** Product name */
   title: string;
   /** Product description */
@@ -1146,7 +1146,7 @@ interface Invoice {
   total_amount: number;
 }
 
-interface SuccessfulPayment {
+export interface SuccessfulPayment {
   /** Three-letter ISO 4217 currency code */
   currency: string;
   /** Total price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). */
@@ -1163,19 +1163,19 @@ interface SuccessfulPayment {
   provider_payment_charge_id: string;
 }
 
-interface WriteAccessAllowed {
+export interface WriteAccessAllowed {
   /** Name of the Web App which was launched from a link */
   web_app_name?: string;
 }
 
-interface PassportData {
+export interface PassportData {
   /** Array with information about documents and other Telegram Passport elements that was shared with the bot */
   data: string[]; // todo
   /** Encrypted credentials required to decrypt the data */
   credentials: string; // todo
 }
 
-interface ProximityAlertTriggered {
+export interface ProximityAlertTriggered {
   /** User that triggered the alert */
   traveler: User;
   /** User that set the alert */
@@ -1184,7 +1184,7 @@ interface ProximityAlertTriggered {
   distance: number;
 }
 
-interface ForumTopicCreated {
+export interface ForumTopicCreated {
   /** Name of the topic */
   name: string;
   /** Color of the topic icon in RGB format */
@@ -1193,49 +1193,49 @@ interface ForumTopicCreated {
   icon_custom_emoji_id?: string;
 }
 
-interface ForumTopicEdited {
+export interface ForumTopicEdited {
   /** New name of the topic, if it was edited */
   name?: string;
   /** New identifier of the custom emoji shown as the topic icon, if it was edited; an empty string if the icon was removed */
   icon_custom_emoji_id?: string;
 }
 
-interface ForumTopicClosed {
+export interface ForumTopicClosed {
   /** This object represents a service message about a forum topic closed in the chat. Current holds no information. */
   data?: unknown;
 }
 
-interface ForumTopicReopened {
+export interface ForumTopicReopened {
   /** This object represents a service message about a forum topic reopened in the chat. Current holds no information. */
   data?: unknown;
 }
 
-interface GeneralForumTopicHidden {
+export interface GeneralForumTopicHidden {
   /** This object represents a service message about General forum topic hidden in the chat. Current holds no information. */
   data?: unknown;
 }
 
-interface GeneralForumTopicUnhidden {
+export interface GeneralForumTopicUnhidden {
   /** This object represents a service message about General forum topic unhidden in the chat. Current holds no information. */
   data?: unknown;
 }
 
-interface VideoChatScheduled {
+export interface VideoChatScheduled {
   /** Point in time (Unix timestamp) when the video chat is supposed to be started by a chat administrator */
   start_date: number;
 }
 
-interface VideoChatStarted {
+export interface VideoChatStarted {
   /** This object represents a service message about a video chat started in the chat. Current holds no information. */
   data?: unknown;
 }
 
-interface VideoChatEnded {
+export interface VideoChatEnded {
   /** Video chat duration in seconds */
   duration: number;
 }
 
-interface VideoChatParticipantsInvited {
+export interface VideoChatParticipantsInvited {
   /** New members that were invited to the video chat */
   users: User[];
 }
