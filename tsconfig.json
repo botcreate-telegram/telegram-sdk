@@ -1,25 +1,21 @@
 {
   "compilerOptions": {
-    "outDir": "./lib",
-    "module": "esnext",
-    "target": "es6",
-    "lib": [
-      "es6",
-      "dom"
-    ],
-    "typeRoots": [
-      "./lib"
-    ],
-    "declaration": true,
-    "removeComments": false,
-    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "lib": ["ESNext", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "resolveJsonModule": true,
     "sourceMap": true,
-    "incremental": true,
-    "skipLibCheck": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "strictBindCallApply": true,
+    "strict": true,
+    "target": "ESNext"
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "lib"]
+  "include": ["./src/**/*.ts", "./tests/**/*.test.ts"],
+  "exclude": ["node_modules", "dist"]
 }

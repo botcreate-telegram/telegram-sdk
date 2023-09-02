@@ -1,15 +1,29 @@
 {
   "name": "@botcreate/telegram-sdk",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Telegram Bot API: all methods and objects",
-  "type": "module",
-  "main": "./lib/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {}
+  },
   "files": [
-    "/lib"
+    "dist/**/*",
+    "LICENSE",
+    "README.md"
   ],
   "scripts": {
-    "build": "rm -rf ./lib/*; npm run build:esm",
-    "build:esm": "tsc",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "changeset": "npm run build && changeset",
     "changeset:version": "changeset version",
     "changeset:publish": "changeset publish",
@@ -43,6 +57,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "prettier": "^3.0.3",
+    "tsup": "^7.2.0",
     "typescript": "5.2.2"
   }
 }
